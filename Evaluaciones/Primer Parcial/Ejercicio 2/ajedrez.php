@@ -12,7 +12,7 @@
 		$columna = $_POST["columna"];
 
 		function imprimir_casilla($fila, $columna, $nombre, $color) {
-			echo "<td>$nombre . <img src='images/Bowser.png' height='40px'></td>";
+			echo "<td>$nombre  <img src='images/Bowser.png' height='40px'></td>";
 		}
 
 		echo "<table class='tabla';>";

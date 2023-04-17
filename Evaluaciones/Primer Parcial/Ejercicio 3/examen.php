@@ -9,7 +9,7 @@ class Examen {
     }
     
     function cruzar() {
-        $letras_comunes = array_intersect(str_split($this->cadena1), str_split($this->cadena2));
+        $letras_comunes = ;
         
         if (empty($letras_comunes)) {
             echo "no existen letras comunes";
