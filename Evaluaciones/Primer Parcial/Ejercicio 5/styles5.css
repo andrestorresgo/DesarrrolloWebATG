@@ -1,7 +1,7 @@
 .enrectar{
     display: flex;
-    flex-direction: row;
-    flex-flow: row;
+    flex-direction: column;
+    flex-flow: column wrap;
     justify-content: none;
     border: solid black 1px;
 }
