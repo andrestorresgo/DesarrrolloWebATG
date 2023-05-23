@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Compras</title>
+  <style>
+    .resaltado {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+    <label for="elementoInput">Elemento lista</label>
+    <input type="text" id="elementoInput">
+    <button onclick="agregarElemento()">Añadir</button>
+    <ul id="listaCompras"></ul>
+
+    <script>
+        const elementoInput = document.getElementById('elementoInput');
+        const anadir = document.getElementById('anadir');
+        const listaCompras = document.getElementById('listaCompras');
+
+        function agregarElemento() {
+            const elemento = elementoInput.value;
+
+    const existeDe = elemento.toLowerCase().includes('de');
+
+    const nuevoElemento = document.createElement('li');
+    nuevoElemento.textContent = elemento;
+
+    if (existeDe) {
+        nuevoElemento.classList.add('resaltado');
+    }
+
+    listaCompras.appendChild(nuevoElemento);
+    }
+  </script>
+</body>
+</html>

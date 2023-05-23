@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <script>
+
+    var cantidadEstudiantes = prompt("Ingrese la antidad de estudiantes:");
+    var estudiantes = [];
+
+    for (var i = 0; i < cantidadEstudiantes; i++) {
+      var estudiante = {};
+
+      estudiante.apellidos_nombres = prompt("Nombres y apellidos del estudiante " + (i + 1) + ":");
+      estudiante.edad = prompt("Edad del estudiante " + (i + 1) + ":");
+      estudiante.materia = prompt("Ingrese la materia del estudiante " + (i + 1) + ":");
+      estudiante.nota = prompt("Nota de la materia del estudiante " + (i + 1) + ":");
+
+      estudiantes.push(estudiante);
+    }
+
+    var tabla = "<table>";
+    tabla += "<tr><th>N</th><th>Nombres y Apellidos</th><th>Edad</th><th>Materia</th><th>Nota</th></tr>";
+
+    for (var i = 0; i < estudiantes.length; i++) {
+      var estudiante = estudiantes[i];
+      var numeroEstudiante = i + 1;
+      var nombre = estudiante.apellidos_nombres;
+      var edad = estudiante.edad;
+      var materia = estudiante.materia;
+      var nota = estudiante.nota;
+
+      tabla += "<tr><td>" + numeroEstudiante + "</td><td>" + nombre + "</td><td>" + edad + "</td><td>" + materia + "</td><td>" + nota + "</td></tr>";
+    }
+
+    tabla += "</table>";
+
+    document.body.innerHTML = tabla;
+
+    function encontrarMejorEstudiante() {
+      var mejorNota = 0;
+      var mejorEstudiante = null;
+
+      for (var i = 0; i < estudiantes.length; i++) {
+        var estudiante = estudiantes[i];
+        if (estudiante.nota > mejorNota) {
+          mejorNota = estudiante.nota;
+          mejorEstudiante = estudiante;
+        }
+      }
+
+      if (mejorEstudiante) {
+        var filaMejorEstudiante = document.querySelector("tr:nth-child(" + (estudiantes.indexOf(mejorEstudiante) + 2) + ")");
+        filaMejorEstudiante.classList.add("mejorEstudiante");
+      }
+    }
+
+    encontrarMejorEstudiante();
+  </script>
+</body>
+</html>

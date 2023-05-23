@@ -1,0 +1,19 @@
+table{
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+  }
+
+  th{
+    background-color:cyan;
+    }
+
+  .mejorEstudiante {
+    background-color: green;
+    color: white;
+  }
