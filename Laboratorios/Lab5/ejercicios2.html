@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        #contenedor-principal {
+            display: flex;
+        }
+        
+        #contenido {
+            flex: 1;
+            background-color: lightgray;
+            border: 2px solid orange;
+            padding: 10px;
+        }
+        
+        #botones {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-end;
+            padding: 10px;
+            border: 2px solid orange;
+        }
+        
+        #mensaje {
+            background-color: lightblue;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border: 2px solid orange;
+        }
+        
+        #Resultado {
+            margin-top: 10px;
+            background-color: lightgray;
+            padding: 10px;
+            border: 2px solid orange;
+        }
+    </style>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div id="contenedor-principal">
+        <div id="contenido">
+            <!-- Contenido principal -->
+        </div>
+    
+        <div id="botones">
+            <button> <a href="javascript:cargarContenido('cambiaratributos.html')">Botón 1</a></button>
+            <button onclick="cargarTabla()">Botón 2</button>
+            <button onclick="cargarSeleccionar()">Botón 3</button>
+        </div>
+    </div>
+    
+    <div id="mensaje">
+        <!-- Barra de mensajes -->
+    </div>
+</body>
+</html>

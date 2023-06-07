@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="numero">Tabla del</label>
+        <input type="number" id="numero">
+        <input type="radio" name="seleccion" value="opcion1"> suma
+        <input type="radio" name="seleccion" value="opcion2"> resta
+        <input type="radio" name="seleccion" value="opcion3"> multiplicación
+        <input type="radio" name="seleccion" value="opcion4"> división
+        <label for="tope">hasta el</label>
+        <input type="number" id="tope">
+        <button onclick="generarTabla()">Tabla</button>
+    </div>
+    <div id="Resultado">
+        tabla
+    </div>
+
+    <script>
+        function generarTabla() {
+            var numero = document.getElementById("numero").value;
+            var tope = document.getElementById("tope").value;
+            var seleccion = document.querySelector('input[name="seleccion"]:checked').value;
+            var resultado = "";
+
+            for (var i = numero; i <= tope; i++) {
+                resultado += "<tr>";
+                resultado += "<td>" + i + "</td>";
+                
+                if (seleccion === "opcion1") {
+                    resultado += "<td>" + (Number(i) + Number(numero)) + "</td>";
+                } else if (seleccion === "opcion2") {
+                    resultado += "<td>" + (Number(i) - Number(numero)) + "</td>";
+                } else if (seleccion === "opcion3") {
+                    resultado += "<td>" + (Number(i) * Number(numero)) + "</td>";
+                } else if (seleccion === "opcion4") {
+                    resultado += "<td>" + (Number(i) / Number(numero)) + "</td>";
+                }
+                
+                resultado += "</tr>";
+            }
+
+            document.getElementById("Resultado").innerHTML = "<table>" + resultado + "</table>";
+        }
+    </script>
+</body>
+</html>

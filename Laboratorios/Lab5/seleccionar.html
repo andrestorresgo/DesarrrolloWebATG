@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <select id="mes">
+            <option value="01">Enero</option>
+            <option value="02">Febrero</option>
+            <option value="03">Marzo</option>
+            <option value="04">Abril</option>
+            <option value="05">Mayo</option>
+            <option value="06">Junio</option>
+            <option value="07">Julio</option>
+            <option value="08">Agosto</option>
+            <option value="09">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+        </select>
+        <select id="anio">
+            <?php
+            $anioActual = date("Y");
+            for ($i = 1975; $i <= $anioActual; $i++) {
+                echo "<option value='$i'>$i</option>";
+            }
+            ?>
+        </select>
+    </div>
+    
+    <div id="resultado"></div>
+    
+    <script>
+        function actualizarCalendario() {
+            var mesSeleccionado = document.getElementById("mes").value;
+            var anioSeleccionado = document.getElementById("anio").value;
+    
+            fetch("calendario.php?mes=" + mesSeleccionado + "&anio=" + anioSeleccionado)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("resultado").innerHTML = data;
+                })
+                .catch(error => console.log(error));
+        }
+    
+        document.getElementById("mes").addEventListener("change", actualizarCalendario);
+        document.getElementById("anio").addEventListener("change", actualizarCalendario);
+    
+        // Cargar el calendario por defecto al cargar la página
+        actualizarCalendario();
+    </script>
+    
+</body>
+</html>
