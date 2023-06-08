@@ -11,6 +11,20 @@ function cargarContenido(abrir) {
     ajax.send();
 }
 
+function aplicarCambios() {
+    var elementoSeleccionado = document.getElementById("elemento-seleccionado").value;
+    var ancho = document.getElementById("ancho").value + "px";
+    var alto = document.getElementById("alto").value + "px";
+    var color = document.getElementById("color").value;
+    
+    var elemento = document.getElementById(elementoSeleccionado);
+    if (elemento) {
+        elemento.style.width = ancho;
+        elemento.style.height = alto;
+        elemento.style.backgroundColor = color;
+    }
+}
+
 function generarTabla() {
     var numero = document.getElementById("numero").value;
     var tope = document.getElementById("tope").value;
