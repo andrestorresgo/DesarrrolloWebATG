@@ -11,6 +11,43 @@ function cargarContenido(abrir) {
     ajax.send();
 }
 
+function generarTabla() {
+    var numero = document.getElementById("numero").value;
+    var tope = document.getElementById("tope").value;
+    var seleccion = document.querySelector('input[name="seleccion"]:checked').value;
+    var resultado = "";
+
+    for (var i = numero; i <= tope; i++) {
+        resultado += "<tr>";
+        resultado += "<td>" + numero + "</td>";
+
+        var operacion = "";
+        var resultadoOperacion = "";
+
+        if (seleccion === "opcion1") {
+            operacion = "+";
+            resultadoOperacion = Number(numero) + Number(i);
+        } else if (seleccion === "opcion2") {
+            operacion = "-";
+            resultadoOperacion = Number(numero) - Number(i);
+        } else if (seleccion === "opcion3") {
+            operacion = "x";
+            resultadoOperacion = Number(numero) * Number(i);
+        } else if (seleccion === "opcion4") {
+            operacion = "/";
+            resultadoOperacion = Number(numero) / Number(i);
+        }
+
+        resultado += "<td>" + operacion + "</td>";
+        resultado += "<td>" + i + "</td>";
+        resultado += "<td>=</td>";
+        resultado += "<td>" + resultadoOperacion + "</td>";
+        resultado += "</tr>";
+    }
+
+    document.getElementById("Resultado").innerHTML = "<table>" + resultado + "</table>";
+}
+
 function cargarTabla() {
     fetch("tabla.html")
         .then(response => response.text())
@@ -22,63 +59,19 @@ function cargarTabla() {
         });
 }
 
-function aplicarCambios() {
-    var elementoSeleccionado = document.getElementById("elemento-seleccionado").value;
-    var ancho = document.getElementById("ancho").value + "px";
-    var alto = document.getElementById("alto").value + "px";
-    var color = document.getElementById("color").value;
-    
-    var elemento = document.getElementById(elementoSeleccionado);
-    if (elemento) {
-        elemento.style.width = ancho;
-        elemento.style.height = alto;
-        elemento.style.backgroundColor = color;
-    }
-}
-
-function generarTabla() {
-    var seleccion = document.querySelector('input[name="seleccion"]:checked').value;
-    var texto = document.getElementById("texto").value;
-    
-    fetch("calcular.php?seleccion=" + seleccion + "&numero=" + texto)
-        .then(response => response.json())
-        .then(data => {
-            var tabla = '<table>';
-            for (var i = 0; i < data.filas.length; i++) {
-                tabla += '<tr>';
-                for (var j = 0; j < data.columnas.length; j++) {
-                    tabla += '<td>' + data.filas[i] + ' - ' + data.columnas[j] + '</td>';
-                }
-                tabla += '</tr>';
-            }
-            tabla += '</table>';
-            document.getElementById("Resultado").innerHTML = tabla;
-        })
-        .catch(error => {
-            console.error("Error al generar la tabla:", error);
-        });
-}
-
-function cargarSeleccionar() {
-    fetch("seleccionar.html")
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById("contenido").innerHTML = data;
-        })
-        .catch(error => {
-            console.error("Error al cargar seleccionar:", error);
-        });
-}
 
 function actualizarCalendario() {
-    var anio = $("#anio").val();
-    var mes = $("#mes").val();
-    
-    $.get("calendario.php", { anio: anio, mes: mes })
-        .done(function(data) {
-            $("#resultado").html(data);
-        })
-        .fail(function() {
-            console.error("Error al actualizar el calendario");
-        });
+    var ajax = new XMLHttpRequest();
+  
+    ajax.onreadystatechange = function() {
+      if (this.readyState === 4 && this.status === 200) {
+        document.getElementById("resultado").innerHTML = this.responseText;
+      }
+    };
+  
+    var mes = document.getElementById("mes").value;
+    var anio = document.getElementById("anio").value;
+  
+    ajax.open("GET", "calendario.php?mes=" + mes + "&anio=" + anio, true);
+    ajax.send();
 }

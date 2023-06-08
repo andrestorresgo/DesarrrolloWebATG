@@ -45,14 +45,14 @@ for ($x=1; $x<=$days; $x++) $days2Use[] = $x;
 
 $jd = GregorianToJD($mes,1,$anio); 
 $dayWeek = jddayofweek($jd,0); 
-/$v son los primeros DIAS/ 
+ 
 $v = 7 - $dayWeek; 
 $start = ($dayWeek == 0) ? false : true; 
 
 if ($v < 7) { 
 	$m = 1; 
 	$preDays2Use = array_filter($days2Use,'splitDays'); 
-	/preparamos para mostrar/ 
+
 	$rest = 7 - count($preDays2Use); 
 	$fDays2Use = array(); 
 	for ($y = 1; $y <= $rest; $y++) $fDays2Use[] = '&nbsp;'; 
