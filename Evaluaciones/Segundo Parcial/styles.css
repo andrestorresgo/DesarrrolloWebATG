@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+button {
+  height: 50px;
+  width: 100px;
+  border: green;
+}
+
+#contenedorprincipal {
+    display: flex;
+    border: 1px solid black;
+}
+
+#titulo {
+  display: flex;
+  background-color: cornflowerblue;
+  color: white;
+  padding: 10px;
+}
+
+#contenido {
+    flex: 1;
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+#mensaje {
+    display: flex;
+    width: 300px;
+    background-color: red;
+    color: white;
+    padding: 10px;
+}
+
+.blancoynegro {
+    filter: grayscale(100%);
+}
+
+#arriba {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: cornflowerblue;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid black;
+  flex-flow: row;
+}
+
+#abajo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: red;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid black;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tres en Raya</title>
+  <style>
+    .button {
+      width: 100px;
+      height: 100px;
+      font-size: 48px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tres en Raya</h1>
+  <div id="mensaje"></div>
+  <table>
+    <tr>
+      <td><button id="casilla-0-0" class="button" onclick="marcarCasilla(0, 0)"></button></td>
+      <td><button id="casilla-0-1" class="button" onclick="marcarCasilla(0, 1)"></button></td>
+      <td><button id="casilla-0-2" class="button" onclick="marcarCasilla(0, 2)"></button></td>
+    </tr>
+    <tr>
+      <td><button id="casilla-1-0" class="button" onclick="marcarCasilla(1, 0)"></button></td>
+      <td><button id="casilla-1-1" class="button" onclick="marcarCasilla(1, 1)"></button></td>
+      <td><button id="casilla-1-2" class="button" onclick="marcarCasilla(1, 2)"></button></td>
+    </tr>
+    <tr>
+      <td><button id="casilla-2-0" class="button" onclick="marcarCasilla(2, 0)"></button></td>
+      <td><button id="casilla-2-1" class="button" onclick="marcarCasilla(2, 1)"></button></td>
+      <td><button id="casilla-2-2" class="button" onclick="marcarCasilla(2, 2)"></button></td>
+    </tr>
+  </table>
+
+  <script>
+    var turno = 'X';
+
+    function marcarCasilla(fila, columna) {
+      var boton = document.getElementById("casilla-" + fila + "-" + columna);
+      if (boton.innerHTML === "") {
+        boton.innerHTML = turno;
+        cambiarTurno();
+      } else {
+        mostrarMensaje("Casilla ocupada, intenta otra.");
+      }
+    }
+
+    function cambiarTurno() {
+      if (turno === 'X') {
+        turno = 'O';
+      } else {
+        turno = 'X';
+      }
+      mostrarMensaje("Turno de " + turno);
+    }
+
+    function mostrarMensaje(mensaje) {
+      var mensajeDiv = document.getElementById("mensaje");
+      mensajeDiv.innerHTML = mensaje;
+    }
+  </script>
+</body>
+</html>
